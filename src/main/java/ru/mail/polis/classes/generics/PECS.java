@@ -1,4 +1,4 @@
-package ru.mail.polis.generics;
+package ru.mail.polis.classes.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,7 +50,7 @@ public class PECS {
         // 4 вариант ? extends T -> ? super T
         List<Animal> animalDest = new ArrayList<>();
         Collections.<Pet>copy(animalDest, srcKitty);
-        for(Animal a: animalDest) {
+        for (Animal a: animalDest) {
             a.feed();
         }
 

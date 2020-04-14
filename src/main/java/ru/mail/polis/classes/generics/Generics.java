@@ -1,4 +1,4 @@
-package ru.mail.polis.generics;
+package ru.mail.polis.classes.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
