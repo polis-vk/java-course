@@ -30,11 +30,16 @@ public class ObjectStreams {
         System.out.println("newChild = " + newChild);
     }
 
+    static class Temp {
+
+    }
+
     public static class People implements Serializable {
         private final String firstName;
         private final String lastName;
         private People mom;
         private People dad;
+        private transient Temp temp = new Temp();
         private int age;
         private transient String initials;
 

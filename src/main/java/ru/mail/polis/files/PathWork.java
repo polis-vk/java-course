@@ -14,7 +14,7 @@ public class PathWork {
     public static long directoryCount(Path dir) throws IOException {
         long count = 0;
         try (DirectoryStream<Path> directoryStream =
-                     Files.newDirectoryStream(dir, path -> path.startsWith("spsuace"))) {
+                     Files.newDirectoryStream(dir, path -> path.startsWith("polis"))) {
             for (Path directory : directoryStream) {
                 count++;
             }
@@ -23,7 +23,7 @@ public class PathWork {
     }
 
     public static long filesCount(Path dir) throws IOException {
-        int count = 0;
+//        int count = 0;
         AtomicInteger atomicCount = new AtomicInteger();
         Files.walkFileTree(dir, new SimpleFileVisitor<Path>() {
 
