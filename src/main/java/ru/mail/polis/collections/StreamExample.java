@@ -22,18 +22,19 @@ public class StreamExample {
         Stream<String> empty = Stream.empty();
     }
 
+    static AtomicInteger a = new AtomicInteger(0);
+    static AtomicInteger b = new AtomicInteger(0);
+    static AtomicInteger c = new AtomicInteger(0);
+    static AtomicInteger d = new AtomicInteger(0);
+    static AtomicInteger e = new AtomicInteger(0);
+    static AtomicInteger f = new AtomicInteger(0);
+    static AtomicInteger g = new AtomicInteger(0);
 
 
     public static void example() {
         Collection<String> names = Arrays.asList("Alex", "Maria", "Anna", "Petr", "N", null);
-        AtomicInteger a = new AtomicInteger(0);
-        AtomicInteger b = new AtomicInteger(0);
-        AtomicInteger c = new AtomicInteger(0);
-        AtomicInteger d = new AtomicInteger(0);
-        AtomicInteger e = new AtomicInteger(0);
-        AtomicInteger f = new AtomicInteger(0);
         Stream<Character> stream =  names.stream()
-//                .peek(i -> a.incrementAndGet())
+                .peek(i -> a.incrementAndGet())
                 .filter(Objects::nonNull)
                 .filter(name -> name.length() > 3)
                 .peek(i -> b.incrementAndGet())
@@ -41,15 +42,15 @@ public class StreamExample {
                 .flatMapToInt(String::chars)
                 .peek(i -> c.incrementAndGet())
                 .sorted()
-//                .distinct()
                 .peek(i -> d.incrementAndGet())
-                .skip(2)
+                .distinct()
                 .peek(i -> e.incrementAndGet())
-                .limit(4)
+                .skip(2)
                 .peek(i -> f.incrementAndGet())
+                .limit(5)
+                .peek(i -> g.incrementAndGet())
                 .boxed()
                 .map(ch -> (char) ((int) ch));
-//                .collect(Collectors.toList());
 
         List<Character> chars = stream.collect(Collectors.toList());
 
@@ -58,7 +59,7 @@ public class StreamExample {
             sb.append((char) aChar).append(" ");
         }
         System.out.println(sb);
-        System.out.println("a = " + a + ", b = " + b + ", c = " + c + ", d = " + d + ", e = " + e + ", f = " + f);
+        System.out.println("a = " + a + ", b = " + b + ", c = " + c + ", d = " + d + ", e = " + e + ", f = " + f + ", g = " + g);
     }
 
 
