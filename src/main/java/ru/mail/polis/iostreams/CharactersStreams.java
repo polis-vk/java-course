@@ -15,8 +15,9 @@ import java.nio.file.Paths;
 
 public class CharactersStreams {
 
-    public static void readAndWriteFile(String fileName) throws FileNotFoundException {
-        Reader reader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);
+    public static void readAndWriteFile(String fileName) throws IOException {
+        Reader reader = new InputStreamReader(Files.newInputStream(Paths.get(fileName)),
+                StandardCharsets.UTF_8);
 
         Writer writer = new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8);
     }
