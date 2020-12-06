@@ -22,6 +22,7 @@ public class ObjectStreams {
         Path path = Paths.get("object.bin");
         try (ObjectOutputStream outputStream =
                      new ObjectOutputStream(Files.newOutputStream(path))) {
+//            sergeev.writeExternal(outputStream);
             outputStream.writeObject(sergeev);
 //            sergeev.setDog(new Dog("Loki", "German Shepherd"));
 //            System.out.println("sergeev = " + sergeev);
@@ -44,7 +45,8 @@ public class ObjectStreams {
         private int age;
         private String firstName;
 
-        public HomoSapiens() {}
+        public HomoSapiens() {
+        }
 
         public HomoSapiens(int age, String firstName) {
             if (age > 100) {
@@ -65,10 +67,13 @@ public class ObjectStreams {
         public void writeExternal(ObjectOutput out) throws IOException {
             out.writeInt(age);
             out.writeUTF(firstName);
+            System.out.println("!!!!!!!!");
         }
 
         public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
             age = in.readInt();
+            System.out.println("---------");
+
             if (age > 100) {
                 throw new IllegalArgumentException();
             }
@@ -116,7 +121,7 @@ public class ObjectStreams {
         }
     }
 
-    public static class People extends HomoSapiens implements Serializable {
+    public static class People extends HomoSapiens  {
         private String lastName;
         private Dog dog;
 
@@ -128,6 +133,16 @@ public class ObjectStreams {
             super(age, firstName);
             this.lastName = lastName;
             this.dog = dog;
+        }
+
+        @Override
+        public void writeExternal(ObjectOutput out) throws IOException {
+            super.writeExternal(out);
+        }
+
+        @Override
+        public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+            super.readExternal(in);
         }
 
         public String getLastName() {

@@ -15,7 +15,6 @@ public class Account {
         checkPositiveSum(amount);
         synchronized (this) {
             balance = balance + amount;
-            notify();
         }
     }
 
@@ -28,16 +27,16 @@ public class Account {
             balance = balance - amount;
         }
     }
-
-    public void waitAndWithdraw(long amount) throws InterruptedException {
-        checkPositiveSum(amount);
-        synchronized (this) {
-            while (balance < amount) {
-                wait();
-            }
-            balance -= amount;
-        }
-    }
+//
+//    public void waitAndWithdraw(long amount) throws InterruptedException {
+//        checkPositiveSum(amount);
+//        synchronized (this) {
+//            while (balance < amount) {
+//                wait();
+//            }
+//            balance -= amount;
+//        }
+//    }
 
     private static void checkPositiveSum(long amount) {
         if (amount <= 0) {
