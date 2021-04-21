@@ -49,13 +49,13 @@ public class ExtendedClasses {
 
 //    public static void main(String[] args) {
 //        SuperClass i = new SubClass("Galkin", "Alexander", 27);
-//        System.out.println(i.itIsMe().myName());
-//        System.out.println( ((SubClass)i.itIsMe()).myName("Mr."));
+//        System.out.println(i.itIsMe(i).myName());
+//        System.out.println( ((SubClass) i.itIsMe(i)).myName("Mr."));
 //    }
 
     // ---------- abstract ----------
 
-    public static interface Speaking {
+    public interface Speaking {
         void say();
 
         default void say(String str) {
@@ -94,11 +94,11 @@ public class ExtendedClasses {
             System.out.println("Meow!");
         }
 
-        @Override
-        public void say(String str) {
-            System.out.print(str);
-            say();
-        }
+//        @Override
+//        public void say(String str) {
+//            System.out.print(str);
+//            say();
+//        }
 
         public void kyc() {
             System.out.println("Кусь");
@@ -147,7 +147,7 @@ public class ExtendedClasses {
             public void run() {
                 System.out.println(str1);
                 System.out.println("Thread is running");
-//                System.out.println(str2);
+                System.out.println(str2);
             }
         });
         System.out.println(" ----------- ");
