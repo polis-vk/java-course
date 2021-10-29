@@ -1,11 +1,15 @@
 package ru.mail.polis.iostreams;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.Socket;
+import java.net.URL;
 
 public class InputOutputStreams {
 
@@ -22,11 +26,17 @@ public class InputOutputStreams {
         return totalBytes;
     }
 
+    public static void main(String[] args) throws IOException {
+//        socketStreams();
+        urlStream();
+    }
 
     public static void socketStreams() throws IOException {
+
+
         try (Socket socket = new Socket("ya.ru", 80)) {
             OutputStream outputStream = socket.getOutputStream();
-            outputStream.write("GET / HTTP/1.0\r\n\r\n".getBytes());
+            outputStream.write("GET / HTTP/1.1\nHost: ya.ru\n\n".getBytes());
             outputStream.flush();
 
             InputStream inputStream = socket.getInputStream();
@@ -38,9 +48,29 @@ public class InputOutputStreams {
         }
     }
 
+    public static void urlStream() {
+        URL url = null;
+        BufferedReader br;
+        String line;
+        try {
+            url = new URL("https://ya.ru");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        try (InputStream is = url.openStream()) {
+            br = new BufferedReader(new InputStreamReader(is));
+
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
     public static void readRate(InputStream stream) throws IOException {
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(stream);
-        DataInputStream inputStream = new DataInputStream(bufferedInputStream);
+        DataInputStream inputStream = new DataInputStream(new BufferedInputStream(stream));
         String name;
         int rate;
         while (inputStream.available() > 0) {

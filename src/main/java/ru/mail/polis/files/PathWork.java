@@ -16,8 +16,7 @@ public class PathWork {
     public static long directoryCount(Path dir) throws IOException {
         long count = 0;
         try (DirectoryStream<Path> directoryStream =
-                     Files.newDirectoryStream(dir, path -> path.startsWith("polis"));
-             Reader reader = Files.newBufferedReader(Paths.get("sdsd"))) {
+                     Files.newDirectoryStream(dir, path -> path.startsWith("polis"))) {
             for (Path directory : directoryStream) {
                 count++;
             }
@@ -51,11 +50,12 @@ public class PathWork {
     }
 
     public static long filesCount(Path dir) throws IOException {
-        int count = 0;
+//        int count = 0;
         AtomicInteger atomicCount = new AtomicInteger();
         Files.walkFileTree(dir, new SimpleFileVisitor<Path>() {
 
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
+                //                count++;
                 atomicCount.incrementAndGet();
                 return FileVisitResult.CONTINUE;
             }
@@ -69,6 +69,5 @@ public class PathWork {
         });
 //        return count;
         return atomicCount.get();
-//        return 0;
     }
 }
