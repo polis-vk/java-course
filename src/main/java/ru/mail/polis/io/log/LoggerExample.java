@@ -1,4 +1,4 @@
-package ru.mail.polis.iostreams.log;
+package ru.mail.polis.io.log;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +18,7 @@ public class LoggerExample {
         try {
             maybeException();
         } catch (IllegalArgumentException e) {
-            log.log(Level.SEVERE, "Exception caught ", e);
+            log.log(Level.SEVERE, "Exception caught {0} ", new Object[] {"arg", e});
             System.exit(2);
         }
         log.fine("Finish maybeException");

@@ -1,10 +1,10 @@
-package ru.mail.polis.iostreams.log;
+package ru.mail.polis.io.log;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MyApp {
-    final static Logger log = LoggerFactory.getLogger(MyApp.class);
+    static final Logger log = LoggerFactory.getLogger(MyApp.class);
 
     public static void main(String[] args) {
         log.info("Entering application.");

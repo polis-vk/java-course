@@ -1,4 +1,4 @@
-package ru.mail.polis.iostreams;
+package ru.mail.polis.io;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

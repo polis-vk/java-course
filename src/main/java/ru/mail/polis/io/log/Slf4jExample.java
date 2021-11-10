@@ -1,4 +1,4 @@
-package ru.mail.polis.iostreams.log;
+package ru.mail.polis.io.log;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ public class Slf4jExample {
         try {
             maybeException();
         } catch (IllegalArgumentException e) {
-            log.error("Exception caught ", e);
+            log.error("Exception caught {}", "arg1", e);
             System.exit(2);
         }
         log.debug("Finish maybeException");

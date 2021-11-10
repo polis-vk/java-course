@@ -18,7 +18,7 @@
     <root level="warn">
         <appender-ref ref="STDOUT" />
     </root>
-    <logger name="ru.mail.polis.iostreams.log.Foo" level="debug" >
+    <logger name="ru.mail.polis.io.log.Foo" level="debug" >
         <appender-ref ref="file" />
     </logger>
 </configuration>

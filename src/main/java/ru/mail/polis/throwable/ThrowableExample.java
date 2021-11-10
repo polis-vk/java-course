@@ -126,7 +126,10 @@ public class ThrowableExample {
     }
 
     public static void main(String[] args) {
-        System.out.println(doException());
+        IOException ioException = new IOException();
+        System.out.println(ioException);
+        System.out.println(ioException.getCause());
+//        System.out.println(doException());
     }
 
     private static int doException() {
