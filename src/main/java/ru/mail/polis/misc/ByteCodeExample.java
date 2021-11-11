@@ -1,4 +1,4 @@
-package ru.mail.polis.reflection;
+package ru.mail.polis.misc;
 
 import java.io.Serializable;
 
