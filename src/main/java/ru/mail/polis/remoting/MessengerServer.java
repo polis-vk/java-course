@@ -4,6 +4,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+/**
+ * Run first
+ */
 public class MessengerServer {
 
     public static void main(String[] args) {

@@ -4,6 +4,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Random;
 
+/**
+ * Run server first. Then you can run arbitrary number of clients in parallel.
+ */
 public class MessengerClient {
 
     private static final Random random = new Random();
