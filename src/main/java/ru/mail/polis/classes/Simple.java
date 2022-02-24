@@ -19,6 +19,9 @@ public class Simple {
                 System.out.println("n = 1");
             case "sasd":
                 System.out.println("n = 2");
+                System.out.println("n = 2");
+                System.out.println("n = 2");
+                System.out.println("n = 2");
                 break;
             default:
                 System.out.println("n != 1 && n != 2");
