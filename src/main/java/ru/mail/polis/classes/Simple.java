@@ -10,7 +10,17 @@ public class Simple {
     }
 
     public static void main(String[] args) {
-        forAction("str", "str",0);
+        int a = 10;
+        if (a < 2) {
+            return;
+        }
+
+        System.out.println("adasd");
+        System.out.println("adasd");
+        System.out.println("adasd");
+        System.out.println("adasd");
+        System.out.println("adasd");
+
     }
 
     public static void forAction(String n, String a, int maxCount) {
