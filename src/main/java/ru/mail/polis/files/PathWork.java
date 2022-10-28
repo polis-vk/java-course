@@ -13,19 +13,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class PathWork {
 
+    public static void main(String[] args) throws IOException {
+        Path dir = Paths.get("", "src", "main", "java", "ru", "mail", "polis");
+        System.out.println(dir.getName(3));
+        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(dir)) {
+            for (Path directory : directoryStream) {
+                System.out.println(directory);
+            }
+        }
+    }
+
     public static long directoryCount(Path dir) throws IOException {
         long count = 0;
         try (DirectoryStream<Path> directoryStream =
                      Files.newDirectoryStream(dir, path -> path.startsWith("polis"))) {
             for (Path directory : directoryStream) {
                 count++;
-            }
-        }
-
-        try (DirectoryStream<Path> directoryStream =
-                     Files.newDirectoryStream(dir, path -> path.startsWith("polis"))) {
-            try (Reader reader = Files.newBufferedReader(Paths.get("sdsd"))) {
-
             }
         }
 
@@ -50,7 +53,7 @@ public class PathWork {
     }
 
     public static long filesCount(Path dir) throws IOException {
-//        int count = 0;
+        int count = 0;
         AtomicInteger atomicCount = new AtomicInteger();
         Files.walkFileTree(dir, new SimpleFileVisitor<Path>() {
 

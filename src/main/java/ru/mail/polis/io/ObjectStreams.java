@@ -8,6 +8,7 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -177,6 +178,11 @@ public class ObjectStreams {
         private Dog dog;
         private transient String sign;
 
+
+        public People() {
+
+        }
+
 //        private void writeObject(ObjectOutputStream out) throws IOException {
 //            System.out.println("!!!!!");
 //            out.writeUTF(lastName);
@@ -198,14 +204,20 @@ public class ObjectStreams {
 //
 //        }
 
-        public People() {
-        }
+//        }
 
         public People(int age, String lastName, Dog dog, String firstName) {
             super(age, firstName);
             this.lastName = lastName;
             this.dog = dog;
             sign = lastName + getFirstName();
+        }
+
+        public String getSign() {
+            if (sign == null) {
+                sign = lastName + getFirstName();
+            }
+            return sign;
         }
 
         @Override
@@ -241,7 +253,7 @@ public class ObjectStreams {
                     ", firstName='" + getFirstName() + '\'' +
                     ", lastName='" + lastName + '\'' +
                     ", dog=" + dog +
-                    ", sign='" + sign + '\'' +
+                    ", sign='" + getSign() + '\'' +
                     '}';
         }
     }

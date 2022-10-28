@@ -12,7 +12,7 @@ public class FileWork {
         }
         File file1 = new File("src" + File.separator + "java" + File.separator + "file1");
         file1.createNewFile();
-        file1  = new File("src" + File.separator + "java" + File.separator + "file2");
+        file1  = new File("src" + File.separator + "java" + File.separator + "file2.txt");
         file1.createNewFile();
 
         System.out.println(removeDirectory(new File("src" + File.separator + "java")));
